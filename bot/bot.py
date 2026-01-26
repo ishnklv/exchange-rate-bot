@@ -19,7 +19,7 @@ async def currency_watcher():
             last_rate = await get_last_rate(CURRENCY_CODE)
             await save_rate(CURRENCY_CODE, new_buy_rate)
 
-            if last_rate and last_rate != new_buy_rate:
+            if last_rate and last_rate['value'] != new_buy_rate:
                 message = (f"Курс изменился с {last_rate['value']} "
                                    f"на {new_buy_rate} {CURRENCY_CODE}")
             else:
